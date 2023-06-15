@@ -1,5 +1,5 @@
 #!pip install - -upgrade pip
-#!pip install git+https: // github.com/deepset-ai/haystack.git
+# !pip install git+https: // github.com/deepset-ai/haystack.git
 
 from haystack.nodes import PromptNode, PromptTemplate
 from haystack.pipelines import Pipeline
