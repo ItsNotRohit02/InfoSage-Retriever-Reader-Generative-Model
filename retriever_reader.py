@@ -72,11 +72,13 @@ def generative_pipline():
         use_fast_tokenizers=True,
     )
 
-    lfqa_prompt = PromptTemplate(name='lfqa',
+    lfqa_prompt = PromptTemplate(
+        name="lfqa",
         prompt_text="""Synthesize a comprehensive answer from the following text for the given question. 
                              Provide a clear and concise response that summarizes the key points and information presented in the text. 
                              Your answer should be in your own words and match the context with precise numbers and be no longer than 50 words. 
-                             \n\n Related text: {join(documents)} \n\n Question: {query} \n\n Answer:""")
+                             \n\n Related text: {join(documents)} \n\n Question: {query} \n\n Answer:""",
+    )
 
     prompt_node = PromptNode(
         model_name_or_path="declare-lab/flan-alpaca-large",

@@ -32,20 +32,18 @@ with cols1:
         file = st.file_uploader(label="Please upload your file", type=["doc", "pdf"])
         if file is not None:
             with open("my_file.pdf", "wb") as f:
-        
-                    f.write(file.read())
+                f.write(file.read())
         submit_button = st.form_submit_button(label="Submit")
     if submit_button:
         st.success(f"Submitted successfully {URL}")
-    if URL :
+    if URL:
         if model_type == "Reader":
             df = scrap(URL, 50)
             pipe = text_uploader(df)
-   
-        elif model_type == "Generative":
-            df = scrap(URL, 100)
-            pipe = text_uploader(df)
 
+        elif model_type == "Generative":
+            df = scrap(URL, 1000)
+            pipe = text_uploader(df)
 
     if file:
         if model_type == "Reader":
@@ -53,7 +51,7 @@ with cols1:
             pipe = text_uploader(df)
 
         elif model_type == "Generative":
-            df = pdf_reader("C:\QA_model\my_file.pdf", 100)
+            df = pdf_reader("C:\QA_model\my_file.pdf", 1000)
             pipe = text_uploader(df)
 
 
@@ -63,7 +61,6 @@ with cols2:
     st_lottie(lottie_home, key="welcome")
 
 if model_type == "Reader":
-
     colr1, colr2 = st.columns([1, 2])
     with st.form(key="form2"):
         with colr2:
@@ -87,7 +84,7 @@ if model_type == "Reader":
             label="Number of answers to be generated", min_value=0, max_value=10
         )
         submit_button_2 = st.form_submit_button(label="Submit")
-    
+
     if submit_button_2:
         pipe = extractive_pipline()
         preds = pipe.run(
@@ -103,7 +100,6 @@ if model_type == "Reader":
 
 
 elif model_type == "Generative":
-
     colr1, colr2 = st.columns([1, 2])
     with st.form(key="form2"):
         with colr2:
@@ -120,11 +116,9 @@ elif model_type == "Generative":
         st.subheader("Appropriate Hyperparameter are set for Generative model ")
 
         submit_button_2 = st.form_submit_button(label="Submit")
-    
+
     if submit_button_2:
         pipe = generative_pipline()
-        output = pipe.run(
-            query=QUERY, params={"retriever": {"top_k": 3}})
+        output = pipe.run(query=QUERY, params={"retriever": {"top_k": 2}})
         st.subheader("Generative Answer")
         st.text_area(output["results"][0])
-
