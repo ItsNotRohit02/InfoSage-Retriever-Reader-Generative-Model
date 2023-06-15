@@ -1,7 +1,7 @@
 import mysql.connector as connector
 
 global con, cur
-con = connector.connect(host='localhost', port='3306', user='root', password='root', database='newdatabase')
+con = connector.connect(host='localhost', port='3306', user='root', password='root', database='rvcedatabase')
 cur = con.cursor()
 
 
