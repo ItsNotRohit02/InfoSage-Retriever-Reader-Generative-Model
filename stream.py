@@ -186,7 +186,7 @@ def main():
                 pipe = generative_pipline()
                 output = pipe.run(query=QUERY, params={"retriever": {"top_k": 2}})
                 st.subheader("Generative Answer")
-                st.text_area(output["results"][0])
+                st.write(output["results"][0])
 
         st.subheader("Give Feedback")
         with st.form(key="form3"):
