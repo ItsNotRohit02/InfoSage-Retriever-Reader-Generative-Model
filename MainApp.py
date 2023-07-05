@@ -1,9 +1,9 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
-from scraper import scrap
-from retriever_reader import text_uploader, extractive_pipline, generative_pipline
+from Scraper import scrap
+from RetrieverReader import text_uploader, extractive_pipline, generative_pipline
 import requests
-from pdf_preprocess import pdf_reader
+from PDFPreprocess import pdf_reader
 import DatabaseManager
 import hashlib
 
