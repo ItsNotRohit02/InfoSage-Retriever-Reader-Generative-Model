@@ -1,7 +1,7 @@
 import mysql.connector as connector
 
 global con, cur
-con = connector.connect(host='localhost', port='3306', user='root', password='root', database='rvcedatabase')
+con = connector.connect(host='localhost', port='3306', user='root', password='root', database='userdatabase')
 cur = con.cursor()
 
 
@@ -13,7 +13,6 @@ def createTables():
     for query in queries:
         cur.execute(query)
         print("OK ", query)
-
 
 def addLogin(username, password):
     query = f'insert into logininfo values("{username}","{password}")'
